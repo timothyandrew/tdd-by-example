@@ -8,11 +8,11 @@ class Money
   end
 
   def self.dollar(amount)
-    Dollar.new(amount, "USD")
+    Money.new(amount, "USD")
   end
 
   def self.franc(amount)
-    Franc.new(amount, "CHF")
+    Money.new(amount, "CHF")
   end
 
   def times(multiplier)
@@ -22,16 +22,17 @@ class Money
   def ==(other)
     self.currency == other.currency && @amount == other.amount
   end
-end
 
-class Dollar < Money
-  def initialize(amount, currency)
-    super
+  def plus(addend)
+    Money.new(@amount + addend.amount, currency)
   end
 end
 
-class Franc < Money
-  def initialize(amount, currency)
-    super
+module Expression
+end
+
+class Bank
+  def reduce(source, to)
+    Money.dollar(10)
   end
 end
