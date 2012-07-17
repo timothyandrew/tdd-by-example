@@ -5,8 +5,10 @@ def assert(expr)
 end
 
 class TestCaseTest < TestCase
-  test = WasRun.new("test_method") 
-  assert(!test.was_run)
-  test.run
-  assert test.was_run
+  def test_running
+    test = WasRun.new("test_method") 
+    assert(!test.was_run)
+    test.run
+    assert test.was_run
+  end
 end
