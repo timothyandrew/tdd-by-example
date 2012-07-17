@@ -13,7 +13,7 @@ class TestCase
 end
 
 class WasRun < TestCase
-  attr_accessor :was_run, :was_set_up
+  attr_accessor :was_run, :was_set_up, :log
 
   def initialize(name)
     @was_set_up = nil
@@ -22,10 +22,12 @@ class WasRun < TestCase
 
   def test_method
     @was_run = 1
+    @log << "test_method "
   end
 
   def set_up
     @was_run = nil
     @was_set_up = 1
+    @log = "set_up "
   end
 end
