@@ -31,4 +31,22 @@ class TestMoneyExample < Test::Unit::TestCase
     reduced = Bank.new.reduce(sum, "USD")
     assert_equal(Money.dollar(10), reduced)
   end
+
+  def test_plus_returns_sum
+    five = Money.dollar(5)
+    sum = five.plus(five)
+    assert_equal(five, sum.augend)
+    assert_equal(five, sum.addend)
+  end
+
+  def test_reduce_sum
+    sum = Sum.new(Money.dollar(3), Money.dollar(4))
+    result = Bank.new.reduce(sum, "USD")
+    assert_equal(Money.dollar(7), result)
+  end
+
+  def test_reduce_money
+    result = Bank.new.reduce(Money.dollar(1), "USD")
+    assert_equal(Money.dollar(1), result)
+  end
 end
