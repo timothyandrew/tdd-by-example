@@ -1,6 +1,10 @@
 class Money
   attr_reader :amount
   protected   :amount
+
+  def ==(other)
+    @amount == other.amount
+  end
 end
 
 class Dollar < Money
@@ -11,10 +15,6 @@ class Dollar < Money
   def times(multiplier)
     Dollar.new(@amount * multiplier)
   end
-
-  def ==(other)
-    @amount == other.amount
-  end
 end
 
 class Franc < Money
@@ -24,9 +24,5 @@ class Franc < Money
 
   def times(multiplier)
     Franc.new(@amount * multiplier)
-  end
-
-  def ==(other)
-    @amount == other.amount
   end
 end
