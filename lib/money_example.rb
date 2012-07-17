@@ -1,7 +1,9 @@
-class Dollar
+class Money
   attr_reader :amount
-  protected :amount
+  protected   :amount
+end
 
+class Dollar < Money
   def initialize(amount)
     @amount = amount
   end
@@ -15,10 +17,7 @@ class Dollar
   end
 end
 
-class Franc
-  attr_reader :amount
-  protected :amount
-
+class Franc < Money
   def initialize(amount)
     @amount = amount
   end

@@ -17,5 +17,7 @@ class TestMoneyExample < Test::Unit::TestCase
   def test_equality
     assert_true  Dollar.new(5) == Dollar.new(5)
     assert_false Dollar.new(5) == Dollar.new(6)
+    assert_true  Franc.new(5) == Franc.new(5)
+    assert_false Franc.new(5) == Franc.new(6)
   end
 end
