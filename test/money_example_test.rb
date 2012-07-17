@@ -9,4 +9,9 @@ class TestMoneyExample < Test::Unit::TestCase
     product = five.times(3)
     assert_equal(15, product.amount)
   end
+
+  def test_equality
+    assert_true  Dollar.new(5) == Dollar.new(5)
+    assert_false Dollar.new(5) == Dollar.new(6)
+  end
 end
