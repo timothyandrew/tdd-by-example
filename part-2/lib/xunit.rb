@@ -9,11 +9,14 @@ class TestCase
   def tear_down
   end
 
-  def run  
-    result = TestResult.new
+  def run(result) 
     result.test_started
     set_up
-    self.send @name
+    begin
+      self.send @name
+    rescue Exception => e
+      result.test_failed
+    end
     tear_down
     result
   end
@@ -22,14 +25,19 @@ end
 class TestResult
   def initialize
     @run_count = 0
+    @error_count = 0
   end
 
   def test_started
     @run_count += 1
   end
 
+  def test_failed
+    @error_count += 1
+  end
+
   def summary
-    "#{@run_count} run, 0 failed"    
+    "#{@run_count} run, #{@error_count} failed"    
   end
 end
 
