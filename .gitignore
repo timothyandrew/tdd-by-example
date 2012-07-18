@@ -17,3 +17,9 @@ tmp
 _yardoc
 doc/
 .DS_Store
+
+.vagrant
+
+Vagrantfile
+
+provision.sh
