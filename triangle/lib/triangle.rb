@@ -4,6 +4,7 @@ class Triangle
   end
 
   def type
-    return 1 if @sides.uniq.size == 1
+    unique_sides = @sides.uniq.size
+    unique_sides if unique_sides <= 3
   end
 end
